@@ -4,6 +4,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Transition } from '@headlessui/react';
 import { Link, useForm, usePage } from '@inertiajs/react';
+import DateInput from "@/Components/DateInput.jsx";
 
 export default function UpdateProfileInformation({
     mustVerifyEmail,
@@ -15,6 +16,8 @@ export default function UpdateProfileInformation({
     const { data, setData, patch, errors, processing, recentlySuccessful } =
         useForm({
             name: user.name,
+            date_of_birth: user.date_of_birth,
+            id_number: user.id_number,
             email: user.email,
         });
 
@@ -38,7 +41,7 @@ export default function UpdateProfileInformation({
 
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="name" value="Name"/>
 
                     <TextInput
                         id="name"
@@ -50,11 +53,43 @@ export default function UpdateProfileInformation({
                         autoComplete="name"
                     />
 
-                    <InputError className="mt-2" message={errors.name} />
+                    <InputError className="mt-2" message={errors.name}/>
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel htmlFor="date_of_birth" value="Date Of Birth"/>
+
+                    <DateInput
+                        id="date_of_birth"
+                        name="date_of_birth"
+                        value={data.date_of_birth}
+                        className="mt-1 block w-full"
+                        isFocused={true}
+                        onChange={(e) => setData('date_of_birth', e.target.value)}
+                        required
+                    />
+
+                    <InputError className="mt-2" message={errors.date_of_birth}/>
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="id_number" value="ID Number"/>
+
+                    <TextInput
+                        id="id_number"
+                        name="id_number"
+                        value={data.id_number}
+                        className="mt-1 block w-full"
+                        isFocused={true}
+                        onChange={(e) => setData('id_number', e.target.value)}
+                        required
+                    />
+
+                    <InputError className="mt-2" message={errors.id_number}/>
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="email" value="Email"/>
 
                     <TextInput
                         id="email"
@@ -66,7 +101,7 @@ export default function UpdateProfileInformation({
                         autoComplete="username"
                     />
 
-                    <InputError className="mt-2" message={errors.email} />
+                    <InputError className="mt-2" message={errors.email}/>
                 </div>
 
                 {mustVerifyEmail && user.email_verified_at === null && (

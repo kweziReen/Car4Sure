@@ -4,10 +4,13 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
+import DateInput from "@/Components/DateInput.jsx";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
+        date_of_birth: new Date(),
+        id_number: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -27,7 +30,7 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="name" value="Name"/>
 
                     <TextInput
                         id="name"
@@ -40,11 +43,43 @@ export default function Register() {
                         required
                     />
 
-                    <InputError message={errors.name} className="mt-2" />
+                    <InputError message={errors.name} className="mt-2"/>
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="date_of_birth" value="Date Of Birth"/>
+
+                    <DateInput
+                        id="date_of_birth"
+                        name="date_of_birth"
+                        value={data.date_of_birth}
+                        className="mt-1 block w-full"
+                        isFocused={true}
+                        onChange={(e) => setData('date_of_birth', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.date_of_birth} className="mt-2"/>
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="id_number" value="ID Number"/>
+
+                    <TextInput
+                        id="id_number"
+                        name="id_number"
+                        value={data.id_number}
+                        className="mt-1 block w-full"
+                        isFocused={true}
+                        onChange={(e) => setData('id_number', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.id_number} className="mt-2"/>
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel htmlFor="email" value="Email"/>
 
                     <TextInput
                         id="email"
@@ -57,11 +92,11 @@ export default function Register() {
                         required
                     />
 
-                    <InputError message={errors.email} className="mt-2" />
+                    <InputError message={errors.email} className="mt-2"/>
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <InputLabel htmlFor="password" value="Password"/>
 
                     <TextInput
                         id="password"
@@ -74,7 +109,7 @@ export default function Register() {
                         required
                     />
 
-                    <InputError message={errors.password} className="mt-2" />
+                    <InputError message={errors.password} className="mt-2"/>
                 </div>
 
                 <div className="mt-4">
