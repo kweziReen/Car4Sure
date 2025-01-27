@@ -9,6 +9,7 @@ import DateInput from "@/Components/DateInput.jsx";
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
+        surname: '',
         date_of_birth: new Date(),
         id_number: '',
         email: '',
@@ -47,6 +48,23 @@ export default function Register() {
                 </div>
 
                 <div>
+                    <InputLabel htmlFor="surname" value="Surname"/>
+
+                    <TextInput
+                        id="surname"
+                        name="surname"
+                        value={data.surname}
+                        className="mt-1 block w-full"
+                        autoComplete="surname"
+                        isFocused={true}
+                        onChange={(e) => setData('surname', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.surname} className="mt-2"/>
+                </div>
+
+                <div>
                     <InputLabel htmlFor="date_of_birth" value="Date Of Birth"/>
 
                     <DateInput
@@ -54,7 +72,6 @@ export default function Register() {
                         name="date_of_birth"
                         value={data.date_of_birth}
                         className="mt-1 block w-full"
-                        isFocused={true}
                         onChange={(e) => setData('date_of_birth', e.target.value)}
                         required
                     />
