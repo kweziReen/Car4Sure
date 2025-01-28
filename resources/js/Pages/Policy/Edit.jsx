@@ -4,8 +4,9 @@ import UpdateDetails from './Tabs/Details';
 import UpdateAccountHolderDetails from './Tabs/Holder';
 import UpdateAccountHolderAddress from './Tabs/Address';
 import DriversList from "@/Pages/Policy/Tabs/Drivers.jsx";
+import VehicleList from "@/Pages/Policy/Tabs/Vehicles.jsx";
 
-export default function Edit({ component_data, driver_data }) {
+export default function Edit({ component_data }) {
     return (
         <AuthenticatedLayout
             header={
@@ -51,6 +52,13 @@ export default function Edit({ component_data, driver_data }) {
 
                 <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
                     <DriversList
+                        component_data={component_data}
+                        className="w-full"
+                    />
+                </div>
+
+                <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
+                    <VehicleList
                         component_data={component_data}
                         className="w-full"
                     />

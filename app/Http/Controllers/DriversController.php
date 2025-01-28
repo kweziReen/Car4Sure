@@ -71,7 +71,7 @@ class DriversController extends Controller
         $policy = $driver->getPolicy();
 
         return Inertia::render('Drivers/Edit', [
-            'component_data' => new PolicyViewModel($policy, null, null, $driver),
+            'component_data' => new PolicyViewModel($policy, null, null, $driver, null),
         ]);
     }
 

@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
     require __DIR__ . '/profile.php';
     require __DIR__ . '/policy.php';
     require __DIR__ . '/drivers.php';
+    require __DIR__ . '/vehicles.php';
 });
 
 require __DIR__.'/auth.php';

@@ -39,6 +39,11 @@ class Policy extends Model
         return $this->hasMany(Driver::class, 'policy_id', 'id');
     }
 
+    public function relatedVehicles(): HasMany
+    {
+        return $this->hasMany(Vehicle::class, 'policy_id', 'id');
+    }
+
     public function getUser()
     {
         return $this->relatedUser()->first();
@@ -47,5 +52,10 @@ class Policy extends Model
     public function getDrivers(): Collection
     {
         return $this->relatedDrivers()->get();
+    }
+
+    public function getVehicles(): Collection
+    {
+        return $this->relatedVehicles()->get();
     }
 }

@@ -1,35 +1,36 @@
-import {useForm} from "@inertiajs/react";
-import InputLabel from "@/Components/InputLabel.jsx";
-import TextInput from "@/Components/TextInput.jsx";
-import InputError from "@/Components/InputError.jsx";
-import PrimaryButton from "@/Components/PrimaryButton.jsx";
+import InputError from '@/Components/InputError';
+import InputLabel from '@/Components/InputLabel';
+import PrimaryButton from '@/Components/PrimaryButton';
+import {useForm} from '@inertiajs/react';
 import SelectInput from "@/Components/SelectInput.jsx";
+import TextInput from "@/Components/TextInput.jsx";
 
-export default function UpdateAccountHolderAddress({component_data, className = ''}) {
+export default function UpdateGarageDetails({component_data, className = ''}) {
 
-    const { data, setData, patch, errors, processing, recentlySuccessful } =
+    const { data, setData, patch, errors, processing } =
         useForm({
-            street: component_data.address.street || '',
-            city: component_data.address.city || '',
-            state: component_data.address.state || '',
-            zip: component_data.address.zip || '',
+            street: component_data.garage.street || '',
+            city: component_data.garage.city || '',
+            state: component_data.garage.state || '',
+            zip: component_data.garage.zip || '',
         });
+
 
     const submit = (e) => {
         e.preventDefault();
 
-        patch(route('update-policy-address', component_data.policy));
+        patch(route('update-vehicle-garage', component_data.vehicle));
     };
 
     return (
         <section className={className}>
             <header>
                 <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
-                    Policy Holder Address
+                    Vehicle Garage Address
                 </h2>
 
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    Update your policy details.
+                    Update your vehicle garage details.
                 </p>
             </header>
             <form onSubmit={submit}>
@@ -97,8 +98,8 @@ export default function UpdateAccountHolderAddress({component_data, className = 
                 </div>
 
                 <div className="mt-4 flex items-center justify-end">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Update Address
+                    <PrimaryButton className="ms-4 " disabled={processing}>
+                        Update Garage Address
                     </PrimaryButton>
                 </div>
             </form>
