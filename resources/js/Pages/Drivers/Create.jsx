@@ -1,7 +1,7 @@
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
-import {Head, useForm} from '@inertiajs/react';
+import {Head, Link, useForm} from '@inertiajs/react';
 import DateInput from "@/Components/DateInput.jsx";
 import SelectInput from "@/Components/SelectInput.jsx";
 import TextInput from "@/Components/TextInput.jsx";
@@ -43,7 +43,16 @@ export default function AddDrivers({component_data, className = ''}) {
             <div className="py-12">
                 <div className="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
                     <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
-
+                        <div className="flex justify-end gap-4 m-2">
+                            <Link
+                                href={route('policy-details')}
+                                method="get"
+                                as="a"
+                                className="px-4 py-2 text-white bg-green-600 rounded-lg hover:bg-green-400"
+                            >
+                                Back
+                            </Link>
+                        </div>
                         <form onSubmit={submit}>
                             <div className="row grid grid-cols-2 gap-4">
                                 <div className="col-span-1 mt-4">
