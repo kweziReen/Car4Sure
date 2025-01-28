@@ -6,8 +6,6 @@ use App\Http\Requests\AddressRequest;
 use App\Http\Requests\PolicyRequest;
 use App\Http\Requests\UpdatePolicyRequest;
 use App\Models\Policy;
-use App\Models\User;
-use App\View\Model\DriversViewModel;
 use App\View\Model\PolicyViewModel;
 use Carbon\Carbon;
 use Illuminate\Foundation\Application;
@@ -82,7 +80,6 @@ class PolicyController extends Controller
     {
         return Inertia::render('Policy/Edit', [
             'component_data' => new PolicyViewModel($policy),
-            'driver_data'    => new DriversViewModel()
         ]);
     }
 

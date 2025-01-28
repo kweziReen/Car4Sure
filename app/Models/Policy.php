@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Policy extends Model
 {
@@ -32,8 +34,18 @@ class Policy extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function relatedDrivers(): HasMany
+    {
+        return $this->hasMany(Driver::class, 'policy_id', 'id');
+    }
+
     public function getUser()
     {
         return $this->relatedUser()->first();
+    }
+
+    public function getDrivers(): Collection
+    {
+        return $this->relatedDrivers()->get();
     }
 }
