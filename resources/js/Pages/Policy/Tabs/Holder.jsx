@@ -31,44 +31,46 @@ export default function UpdateAccountHolderDetails({component_data, className = 
                 </p>
             </header>
             <form onSubmit={submit}>
-                <div className="mt-4">
-                    <InputLabel htmlFor="name" value="Name"/>
+                <div className="row grid grid-cols-2 gap-4">
+                    <div className="col-span-1 mt-4">
+                        <InputLabel htmlFor="name" value="Name"/>
 
-                    <TextInput
-                        id="name"
-                        className="mt-1 block w-full"
-                        value={data.name}
-                        onChange={(e) => setData('name', e.target.value)}
-                        required
-                        isFocused
-                        autoComplete="policy_no"
-                    />
+                        <TextInput
+                            id="name"
+                            className="mt-1 block w-full"
+                            value={data.name}
+                            onChange={(e) => setData('name', e.target.value)}
+                            required
+                            isFocused
+                            autoComplete="policy_no"
+                        />
 
-                    <InputError className="mt-2" message={errors.name}/>
+                        <InputError className="mt-2" message={errors.name}/>
+                    </div>
+
+                    <div className="col-span-1 mt-4">
+                        <InputLabel htmlFor="surname" value="Surname"/>
+
+                        <TextInput
+                            id="surname"
+                            className="mt-1 block w-full"
+                            value={data.surname}
+                            onChange={(e) => setData('surname', e.target.value)}
+                            required
+                            isFocused
+                            autoComplete="surname"
+                        />
+
+                        <InputError className="mt-2" message={errors.surname}/>
+                    </div>
                 </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="surname" value="Surname"/>
-
-                    <TextInput
-                        id="surname"
-                        className="mt-1 block w-full"
-                        value={data.surname}
-                        onChange={(e) => setData('surname', e.target.value)}
-                        required
-                        isFocused
-                        autoComplete="surname"
-                    />
-
-                    <InputError className="mt-2" message={errors.surname}/>
-                </div>
-
-                <div className="mt-4 flex items-center justify-end">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Update Policy Holder
-                    </PrimaryButton>
-                </div>
+                <div className="mt-6 flex items-center justify-end">
+                        <PrimaryButton className="ms-4" disabled={processing}>
+                            Update Policy Holder
+                        </PrimaryButton>
+                    </div>
             </form>
         </section>
-    );
+);
 }

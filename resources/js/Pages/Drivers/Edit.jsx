@@ -47,7 +47,7 @@ export default function UpdateDrivers({component_data, className = ''}) {
 
                         <form onSubmit={submit}>
                             <div className="row grid grid-cols-2 gap-4">
-                                <div className="col-span-1">
+                                <div className="col-span-1 mt-4">
                                     <InputLabel htmlFor="name" value="Name"/>
                                     <TextInput
                                         id="name"
@@ -62,7 +62,7 @@ export default function UpdateDrivers({component_data, className = ''}) {
                                     <InputError message={errors.name} className="mt-2"/>
                                 </div>
 
-                                <div className="col-span-1">
+                                <div className="col-span-1 mt-4">
                                     <InputLabel htmlFor="surname" value="Surname"/>
                                     <TextInput
                                         id="surname"
@@ -77,7 +77,7 @@ export default function UpdateDrivers({component_data, className = ''}) {
                                     <InputError message={errors.surname} className="mt-2"/>
                                 </div>
 
-                                <div className="col-span-1">
+                                <div className="col-span-1 mt-4">
                                     <InputLabel htmlFor="age" value="Age"/>
                                     <TextInput
                                         id="age"
@@ -91,7 +91,31 @@ export default function UpdateDrivers({component_data, className = ''}) {
                                     <InputError className="mt-2" message={errors.age}/>
                                 </div>
 
-                                <div className="col-span-1">
+                                <div className="col-span-1 mt-0">
+                                    <SelectInput
+                                        name="gender"
+                                        label="Gender"
+                                        value={data.gender}
+                                        options={component_data.genderSelect}
+                                        onChange={(value) => setData("gender", value)}
+                                        required
+                                    />
+                                    <InputError message={errors.gender} className="mt-2"/>
+                                </div>
+
+                                <div className="col-span-1 mt-0">
+                                    <SelectInput
+                                        name="marital_status"
+                                        label="Marital Status"
+                                        value={data.marital_status}
+                                        options={component_data.maritalStatuses}
+                                        onChange={(value) => setData("marital_status", value)}
+                                        required
+                                    />
+                                    <InputError message={errors.marital_status} className="mt-2"/>
+                                </div>
+
+                                <div className="col-span-1 mt-4">
                                     <InputLabel htmlFor="license_number" value="License Number"/>
                                     <TextInput
                                         id="license_number"
@@ -105,7 +129,31 @@ export default function UpdateDrivers({component_data, className = ''}) {
                                     <InputError className="mt-2" message={errors.license_number}/>
                                 </div>
 
-                                <div className="col-span-1">
+                                <div className="col-span-1 mt-0">
+                                    <SelectInput
+                                        name="license_state"
+                                        label="License State"
+                                        value={data.license_state}
+                                        options={component_data.stateSelect}
+                                        onChange={(value) => setData("license_state", value)}
+                                        required
+                                    />
+                                    <InputError message={errors.license_state} className="mt-2"/>
+                                </div>
+
+                                <div className="col-span-1 mt-0">
+                                    <SelectInput
+                                        name="license_status"
+                                        label="License Status"
+                                        value={data.license_status}
+                                        options={component_data.licenceStatuses}
+                                        onChange={(value) => setData("license_status", value)}
+                                        required
+                                    />
+                                    <InputError message={errors.license_status} className="mt-2"/>
+                                </div>
+
+                                <div className="col-span-1 mt-4">
                                     <InputLabel htmlFor="effective_date" value="Effective Date"/>
                                     <DateInput
                                         id="effective_date"
@@ -118,7 +166,7 @@ export default function UpdateDrivers({component_data, className = ''}) {
                                     <InputError message={errors.effective_date} className="mt-2"/>
                                 </div>
 
-                                <div className="col-span-1">
+                                <div className="col-span-1 mt-4">
                                     <InputLabel htmlFor="expiration_date" value="Expiration Date"/>
                                     <DateInput
                                         id="expiration_date"
@@ -131,43 +179,7 @@ export default function UpdateDrivers({component_data, className = ''}) {
                                     <InputError message={errors.expiration_date} className="mt-2"/>
                                 </div>
 
-                                <div className="col-span-1">
-                                    <SelectInput
-                                        name="gender"
-                                        label="Gender"
-                                        value={data.gender}
-                                        options={component_data.genderSelect}
-                                        onChange={(value) => setData("gender", value)}
-                                        required
-                                    />
-                                    <InputError message={errors.gender} className="mt-2"/>
-                                </div>
-
-                                <div className="col-span-1">
-                                    <SelectInput
-                                        name="marital_status"
-                                        label="Marital Status"
-                                        value={data.marital_status}
-                                        options={component_data.maritalStatuses}
-                                        onChange={(value) => setData("marital_status", value)}
-                                        required
-                                    />
-                                    <InputError message={errors.marital_status} className="mt-2"/>
-                                </div>
-
-                                <div className="col-span-1">
-                                    <SelectInput
-                                        name="license_state"
-                                        label="License State"
-                                        value={data.license_state}
-                                        options={component_data.stateSelect}
-                                        onChange={(value) => setData("license_state", value)}
-                                        required
-                                    />
-                                    <InputError message={errors.license_state} className="mt-2"/>
-                                </div>
-
-                                <div className="col-span-1">
+                                <div className="col-span-1 mt-4">
                                     <SelectInput
                                         name="license_class"
                                         label="License Class"
@@ -177,18 +189,6 @@ export default function UpdateDrivers({component_data, className = ''}) {
                                         required
                                     />
                                     <InputError message={errors.license_class} className="mt-2"/>
-                                </div>
-
-                                <div className="col-span-1">
-                                    <SelectInput
-                                        name="license_status"
-                                        label="License Status"
-                                        value={data.license_status}
-                                        options={component_data.licenceStatuses}
-                                        onChange={(value) => setData("license_status", value)}
-                                        required
-                                    />
-                                    <InputError message={errors.license_status} className="mt-2"/>
                                 </div>
                             </div>
                             <div className="mt-6 flex items-center justify-end">

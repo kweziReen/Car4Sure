@@ -45,50 +45,52 @@ export default function Create({component_data }) {
                             </Link>
                         </div>
                         <form onSubmit={submit}>
-                            <div className="mt-4">
-                                <SelectInput
-                                    name="type"
-                                    label="Policy Type"
-                                    value={data.type}
-                                    options={component_data.policyTypes}
-                                    onChange={(value) => setData("type", value)}
-                                    required
-                                    error={errors.type}
-                                />
-                                <InputError message={errors.type} className="mt-2"/>
+                            <div className="row grid grid-cols-2 gap-4">
+                                <div className="col-span-1">
+                                    <InputLabel htmlFor="effective_date" value="Effectvie Date"/>
+
+                                    <DateInput
+                                        id="effective_date"
+                                        name="effective_date"
+                                        value={data.effective_date}
+                                        className="mt-1 block w-full"
+                                        onChange={(e) => setData('effective_date', e.target.value)}
+                                        required
+                                    />
+
+                                    <InputError message={errors.effective_date} className="mt-2"/>
+                                </div>
+
+                                <div className="col-span-1">
+                                    <InputLabel htmlFor="expiration_date" value="Expiration Date"/>
+
+                                    <DateInput
+                                        id="expiration_date"
+                                        name="expiration_date"
+                                        value={data.expiration_date}
+                                        className="mt-1 block w-full"
+                                        onChange={(e) => setData('expiration_date', e.target.value)}
+                                        required
+                                    />
+
+                                    <InputError message={errors.expiration_date} className="mt-2"/>
+                                </div>
+
+                                <div className="col-span-1">
+                                    <SelectInput
+                                        name="type"
+                                        label="Policy Type"
+                                        value={data.type}
+                                        options={component_data.policyTypes}
+                                        onChange={(value) => setData("type", value)}
+                                        required
+                                        error={errors.type}
+                                    />
+                                    <InputError message={errors.type} className="mt-2"/>
+                                </div>
                             </div>
 
-                            <div>
-                                <InputLabel htmlFor="effective_date" value="Effectvie Date"/>
-
-                                <DateInput
-                                    id="effective_date"
-                                    name="effective_date"
-                                    value={data.effective_date}
-                                    className="mt-1 block w-full"
-                                    onChange={(e) => setData('effective_date', e.target.value)}
-                                    required
-                                />
-
-                                <InputError message={errors.effective_date} className="mt-2"/>
-                            </div>
-
-                            <div>
-                                <InputLabel htmlFor="expiration_date" value="Expiration Date"/>
-
-                                <DateInput
-                                    id="expiration_date"
-                                    name="expiration_date"
-                                    value={data.expiration_date}
-                                    className="mt-1 block w-full"
-                                    onChange={(e) => setData('expiration_date', e.target.value)}
-                                    required
-                                />
-
-                                <InputError message={errors.expiration_date} className="mt-2"/>
-                            </div>
-
-                            <div className="mt-4 flex items-center justify-end">
+                            <div className="mt-6 flex items-center justify-end">
                                 <PrimaryButton className="ms-4" disabled={processing}>
                                     Add Policy
                                 </PrimaryButton>

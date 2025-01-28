@@ -37,86 +37,88 @@ export default function UpdateDetails({component_data, className = ''}) {
                 </p>
             </header>
             <form onSubmit={submit}>
-                <div className="mt-4">
-                    <InputLabel htmlFor="policy_no" value="Policy Number"/>
+                <div className="row grid grid-cols-2 gap-4">
+                    <div className="col-span-2">
+                        <InputLabel htmlFor="policy_no" value="Policy Number"/>
 
-                    <TextInput
-                        id="policy_no"
-                        className="mt-1 block w-full"
-                        value={data.policy_no}
-                        onChange={(e) => setData('policy_no', e.target.value)}
-                        required
-                        isFocused
-                        autoComplete="policy_no"
-                        disabled
-                    />
+                        <TextInput
+                            id="policy_no"
+                            className="mt-1 block w-full"
+                            value={data.policy_no}
+                            onChange={(e) => setData('policy_no', e.target.value)}
+                            required
+                            isFocused
+                            autoComplete="policy_no"
+                            disabled
+                        />
 
-                    <InputError className="mt-2" message={errors.policy_no}/>
+                        <InputError className="mt-2" message={errors.policy_no}/>
+                    </div>
+
+                    <div className="col-span-1 mt-4">
+                        <SelectInput
+                            name="type"
+                            label="Policy Type"
+                            value={data.type}
+                            options={component_data.policyTypes}
+                            onChange={(value) => setData("type", value)}
+                            required
+                            error={errors.type}
+                        />
+                        <InputError message={errors.type} className="mt-2"/>
+                    </div>
+
+                    <div className="col-span-1 mt-4">
+                        <SelectInput
+                            name="status"
+                            label="Policy Status"
+                            value={data.status}
+                            options={component_data.policyStatuses}
+                            onChange={(value) => setData("status", value)}
+                            required
+                            error={errors.status}
+                        />
+                        <InputError message={errors.type} className="mt-2"/>
+                    </div>
+
+                    <div className="col-span-1 mt-4">
+                        <InputLabel htmlFor="effective_date" value="Effective Date"/>
+
+                        <DateInput
+                            id="effective_date"
+                            name="effective_date"
+                            value={data.effective_date}
+                            className="mt-1 block w-full"
+                            onChange={(e) => setData('effective_date', e.target.value)}
+                            required
+                            disabled
+                        />
+
+                        <InputError message={errors.effective_date} className="mt-2"/>
+                    </div>
+
+                    <div className="col-span-1 mt-4">
+                        <InputLabel htmlFor="expiration_date" value="Expiration Date"/>
+
+                        <DateInput
+                            id="expiration_date"
+                            name="expiration_date"
+                            value={data.expiration_date}
+                            className="mt-1 block w-full"
+                            onChange={(e) => setData('expiration_date', e.target.value)}
+                            required
+                        />
+
+                        <InputError message={errors.expiration_date} className="mt-2"/>
+                    </div>
                 </div>
 
-                <div className="mt-4">
-                    <SelectInput
-                        name="type"
-                        label="Policy Type"
-                        value={data.type}
-                        options={component_data.policyTypes}
-                        onChange={(value) => setData("type", value)}
-                        required
-                        error={errors.type}
-                    />
-                    <InputError message={errors.type} className="mt-2"/>
-                </div>
-
-                <div className="mt-4">
-                    <SelectInput
-                        name="status"
-                        label="Policy Status"
-                        value={data.status}
-                        options={component_data.policyStatuses}
-                        onChange={(value) => setData("status", value)}
-                        required
-                        error={errors.status}
-                    />
-                    <InputError message={errors.type} className="mt-2"/>
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="effective_date" value="Effective Date"/>
-
-                    <DateInput
-                        id="effective_date"
-                        name="effective_date"
-                        value={data.effective_date}
-                        className="mt-1 block w-full"
-                        onChange={(e) => setData('effective_date', e.target.value)}
-                        required
-                        disabled
-                    />
-
-                    <InputError message={errors.effective_date} className="mt-2"/>
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="expiration_date" value="Expiration Date"/>
-
-                    <DateInput
-                        id="expiration_date"
-                        name="expiration_date"
-                        value={data.expiration_date}
-                        className="mt-1 block w-full"
-                        onChange={(e) => setData('expiration_date', e.target.value)}
-                        required
-                    />
-
-                    <InputError message={errors.expiration_date} className="mt-2"/>
-                </div>
-
-                <div className="mt-4 flex items-center justify-end">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Update Policy
-                    </PrimaryButton>
-                </div>
+                <div className="mt-6 flex items-center justify-end">
+                        <PrimaryButton className="ms-4" disabled={processing}>
+                            Update Policy
+                        </PrimaryButton>
+                    </div>
             </form>
         </section>
-    );
+);
 }

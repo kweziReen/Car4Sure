@@ -3,6 +3,7 @@ import InputLabel from "@/Components/InputLabel.jsx";
 import TextInput from "@/Components/TextInput.jsx";
 import InputError from "@/Components/InputError.jsx";
 import PrimaryButton from "@/Components/PrimaryButton.jsx";
+import SelectInput from "@/Components/SelectInput.jsx";
 
 export default function UpdateAccountHolderAddress({component_data, className = ''}) {
 
@@ -33,69 +34,67 @@ export default function UpdateAccountHolderAddress({component_data, className = 
                 </p>
             </header>
             <form onSubmit={submit}>
-                <div className="mt-4">
-                    <InputLabel htmlFor="street" value="Street"/>
+                <div className="row grid grid-cols-2 gap-4">
+                    <div className="col-span-1 mt-4">
+                        <InputLabel htmlFor="street" value="Street"/>
 
-                    <TextInput
-                        id="street"
-                        className="mt-1 block w-full"
-                        value={data.street}
-                        onChange={(e) => setData('street', e.target.value)}
-                        required
-                        isFocused
-                        autoComplete="street"
-                    />
+                        <TextInput
+                            id="street"
+                            className="mt-1 block w-full"
+                            value={data.street}
+                            onChange={(e) => setData('street', e.target.value)}
+                            required
+                            isFocused
+                            autoComplete="street"
+                        />
 
-                    <InputError className="mt-2" message={errors.street}/>
-                </div>
+                        <InputError className="mt-2" message={errors.street}/>
+                    </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="city" value="City"/>
+                    <div className="col-span-1 mt-4">
+                        <InputLabel htmlFor="city" value="City"/>
 
-                    <TextInput
-                        id="city"
-                        className="mt-1 block w-full"
-                        value={data.city}
-                        onChange={(e) => setData('city', e.target.value)}
-                        required
-                        isFocused
-                        autoComplete="city"
-                    />
+                        <TextInput
+                            id="city"
+                            className="mt-1 block w-full"
+                            value={data.city}
+                            onChange={(e) => setData('city', e.target.value)}
+                            required
+                            isFocused
+                            autoComplete="city"
+                        />
 
-                    <InputError className="mt-2" message={errors.city}/>
-                </div>
+                        <InputError className="mt-2" message={errors.city}/>
+                    </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="state" value="State"/>
+                    <div className="col-span-1 mt-1">
+                        <SelectInput
+                            name="state"
+                            label="State"
+                            value={data.state}
+                            options={component_data.stateSelect}
+                            onChange={(value) => setData("state", value)}
+                            required
+                        />
+                        <InputError message={errors.state} className="mt-2"/>
+                    </div>
 
-                    <TextInput
-                        id="state"
-                        className="mt-1 block w-full"
-                        value={data.state}
-                        onChange={(e) => setData('state', e.target.value)}
-                        required
-                        isFocused
-                        autoComplete="state"
-                    />
+                    <div className="col-span-1 mt-4">
+                        <InputLabel htmlFor="zip" value="Zipcode"/>
 
-                    <InputError className="mt-2" message={errors.state}/>
-                </div>
+                        <TextInput
+                            id="zip"
+                            type="number"
+                            className="mt-1 block w-1/3"
+                            value={data.zip}
+                            onChange={(e) => setData('zip', e.target.value)}
+                            required
+                            isFocused
+                            autoComplete="zip"
+                        />
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="zip" value="Zipcode"/>
-
-                    <TextInput
-                        id="zip"
-                        type="number"
-                        className="mt-1 block w-1/3"
-                        value={data.zip}
-                        onChange={(e) => setData('zip', e.target.value)}
-                        required
-                        isFocused
-                        autoComplete="zip"
-                    />
-
-                    <InputError className="mt-2" message={errors.zip}/>
+                        <InputError className="mt-2" message={errors.zip}/>
+                    </div>
                 </div>
 
                 <div className="mt-4 flex items-center justify-end">

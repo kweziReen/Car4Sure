@@ -31,21 +31,21 @@ export default function Edit({ component_data, driver_data }) {
                     </div>
                     <UpdateDetails
                         component_data={component_data}
-                        className="max-w-xl"
+                        className="w-full"
                     />
                 </div>
 
                 <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
                     <UpdateAccountHolderDetails
                         component_data={component_data}
-                        className="max-w-xl"
+                        className="w-full"
                     />
                 </div>
 
                 <div className="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
                     <UpdateAccountHolderAddress
                         component_data={component_data}
-                        className="max-w-xl"
+                        className="w-full"
                     />
                 </div>
 
