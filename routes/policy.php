@@ -13,5 +13,6 @@ Route::controller(PolicyController::class)->group(function () {
         Route::patch('/update/holder/{policy}', 'updatePolicyHolder')->name('update-policy-holder');
         Route::patch('/update/address/{policy}', 'updatePolicyAddress')->name('update-policy-address');
         Route::delete('/delete', 'destroy')->name('delete-policy');
+        Route::get('/download/{policy_id}', 'download')->name('download-policy');
     });
 });

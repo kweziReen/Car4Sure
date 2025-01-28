@@ -152,4 +152,10 @@ class PolicyController extends Controller
 
         return redirect(route('edit-policy', $policy));
     }
+
+    public function download(int $policy_id)
+    {
+        $policy = Policy::findOrFail($policy_id);
+    }
+
 }
